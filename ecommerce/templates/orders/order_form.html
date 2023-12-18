@@ -1,0 +1,14 @@
+{% include "base/base.html" %}
+{% load bootstrap3 %}
+
+{% block my_content %}
+
+<form action="{% url 'cart:order' %}" method="POST" id='orderForm'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="total">
+        <p>Total Amount: <strong>{{total}}</strong></p>
+    </div>
+    <input type="submit" class='btn btn-primary btn-large' value="Place Order">
+</form>
+{% endblock %}

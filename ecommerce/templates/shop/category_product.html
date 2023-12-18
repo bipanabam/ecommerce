@@ -1,0 +1,22 @@
+{% include "base/base.html" %}
+{% load static%}
+
+{% block body_content %}
+
+<div class="products">
+{% for product in products %}
+    <div class="product-card">
+        <div class="product-list-container">
+            <a class='list-product-item' href="#" >
+                <img src="{{product.image.url}}" alt="Product Name">
+                <h3 class="product-title">{{product.name}}</h3>
+                <p class="product-price">Rs.{{product.price}}</p>
+            </a>
+        </div>
+    </div>
+{% empty %}
+<p>No item for this category yet!!</p>
+{% endfor %}
+</div>
+
+{% endblock  %}

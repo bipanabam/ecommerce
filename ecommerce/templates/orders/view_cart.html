@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block body_content %}
+
+<h2 style="text-align: center;">My Cart</h2>
+<hr>
+
+<table class='table table-bordered'>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            {% comment %} <th>Total</th> {% endcomment %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.price }}</td>
+                <td>{{ item.product_quantity }}</td>
+                <td><button class='btn btn-dark'><a href="{% url 'cart:remove'  pk=item.pk %}" id='remove-button'>Remove</a></button></td>
+            </tr>
+        {% empty %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
+    </tbody>
+</table>
+<button class="btn btn-dark" id="place-order"><a href="{% url 'cart:order' %}">Place Order</a></button>
+
+
+{% endblock %}

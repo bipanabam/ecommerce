@@ -1,0 +1,14 @@
+<div class="products">
+    {% for product in object_list %}
+    <div class="product-card">
+        <div class="product-list-container">
+        <a class='list-product-item' href="{% url 'shop:single' pk=product.pk%}" >
+            <img src="{{product.image.url}}" alt="Product Name">
+            <h3 class="product-title">{{product.name}}</h3>
+            <p class="product-price">Rs.{{product.price}}</p>
+             {% comment %} <p class="product-view-count">{{product.view_count}}</p> {% endcomment %}
+        </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,40 @@
+{% include "base/base.html" %}
+
+{% block body_content %}
+
+{% for order in orders %}
+<h5>Order No: {{order.id}}</h5>
+<p>Placed on {{order.created_at}}</p>
+<a href="{% url 'cart:order_detail' pk=order.pk%}" id="order-detail">
+<div class="container">
+        <div class="row" id="orders">
+            <div class='col-md-4'>
+                <div class="product-image">
+                    <img src="{{order.cart.product.image.url}}" alt="Product Name" class="img-fluid">
+                </div>
+            </div>  
+      
+        <div class="col-sm-8">
+            <div class='product-title'>
+                <span>{{order.cart.product.name}}</span>
+            </div>
+            <div class="product-price">
+                <span>Rs.{{order.cart.product.price}}</span>
+            </div>
+            <div class='product-quantity' >
+                x{{order.cart.product_quantity}}
+                <hr id="product-hr">
+            </div>
+            <div id="order-status">
+                <h6>{{order.status}}</h6>
+            </div>
+            <div id='order-total'>
+                <h5>Total: {{order.total}}</h5>
+            </div>
+        </div>
+</div>
+</a>
+
+{% endfor %}
+
+{% endblock %}

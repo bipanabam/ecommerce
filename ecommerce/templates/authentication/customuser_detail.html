@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block body_content %}
+<div class="col-md-8">
+    <div class="user-profile">
+        <div class='list-user-item'>
+            <h3 class='title list-user-item-heading '>{{user.email}}</h3>
+            <div class="list-user-item-text container-fluid">
+                <div class="row">
+                    <p>Name: {{user.first_name}} {{user.last_name}} </p>
+
+                    <p>Email: {{user.email}}</p>
+
+                    <p>Address: {{user.address}}</p>
+
+                    <p>Contact No: {{user.phone_no}}</P>
+                        
+                    <p><a href="{% url 'authenticate:user_update' pk=user.id %}" 
+                       class='btn btn-lg btn-fill btn-warning'>
+                        <span class='glyphicon glyphicon-pencil'></span> Edit profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

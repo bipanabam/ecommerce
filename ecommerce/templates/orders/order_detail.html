@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block body_content %}
+{% for order in orders %}
+<h5>Order No: {{order.id}}</h5>
+<p>Placed on {{order.created_at}}</p>
+<div class="shipping-detail">
+    <h5>Ship and bill to:</h5>
+    <h6>{{user.email}}</h6>
+    <h6>{{order.user.first_name}} {{order.user.last_name}}</h6>
+    <h6>{{order.phone_number}}</h6>
+    <p>{{order.shipping_address}}</p>
+    <hr id="product-hr">
+    </div>
+<div class="container">
+    <div class="row" id="orders">
+      <div class='col-md-4'>
+        <div class="product-image">
+            <img src="{{order.cart.product.image.url}}" alt="Product Name" class="img-fluid">
+        </div>
+      </div>  
+      
+      <div class="col-sm-8">
+        <div class='product-title'>
+            <span>{{order.cart.product.name}}</span>
+        </div>
+        <div class="product-price">
+            <span>Rs.{{order.cart.product.price}}</span>
+        </div>
+        <div class='product-quantity' >
+            x{{order.cart.product_quantity}}
+        </div>
+        <div id='order-total'>
+            <h5>Total: {{order.total}}</h5>
+        </div>
+        <div class="payment-method">
+            <p>Paid by: {{order.payment_method}}</p>
+        </div>
+        {% comment %} <div id="order-status">
+            <h6>{{order.status}}</h6>
+        </div> {% endcomment %}
+    </div>
+    <hr id="product-hr">
+</div>
+{% endfor %}
+{% endblock %}

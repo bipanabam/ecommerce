@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block body_content %}
+
+<div class="row">
+    <div class="col-sm-4" id="product-detail-image">
+        <div class="product-image">
+            <img src="{{product.image.url}}" alt="Product Name" class="img-fluid">
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class='product-title'>
+            <span>{{product.name}}</span>
+        </div>
+        <div class="product-price">
+            <span>Rs.{{product.price}}</span>
+            <hr id="product-hr">
+        </div>
+        <div class='product-description' >
+            <h4>Description:</h4>
+            {{product.description| safe}}
+            <hr id="product-hr">
+        </div>
+        <div id='product-quantity'>
+            <h5>Available: {{product.quantity}}</h5>
+        </div>
+        <div class="product-quantity">
+            <h5>QTY: 
+            <input id="quantity" type="number" value="1" />
+            </h5>
+        </div>
+        <div class="row-container">
+            <button class='shop-now'>
+                <span>Buy now</span>
+            </button>
+            <button class='add-to-cart'>
+                <a href="{% url 'cart:add_to_cart' product.id %}">
+                    <span>Add to cart</span>
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
